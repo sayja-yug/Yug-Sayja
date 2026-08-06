@@ -282,7 +282,7 @@ export const Home = () => {
           </h3>
 
           <p className="text-slate-300 text-sm sm:text-base font-sans max-w-2xl mx-auto leading-relaxed">
-            Including <strong className="text-cyan-300">SwasthyaCare</strong> (Hospital Management System with Django & Auth0 deployed at <a href="https://swasthyacare.onrender.com/" target="_blank" rel="noopener noreferrer" className="underline text-cyan-400 hover:text-cyan-300">swasthyacare.onrender.com</a>), <strong className="text-purple-300">Smart Shiksha</strong> (Hack Genesis 1st Runner-Up AI Learning Platform), and <strong className="text-amber-300">WhatsApp AI Agent</strong>.
+            Including <strong className="text-cyan-300">SwasthyaCare</strong> (Hospital Management System deployed at <a href="https://swasthyacare.onrender.com/" target="_blank" rel="noopener noreferrer" className="underline text-cyan-400 hover:text-cyan-300">swasthyacare.onrender.com</a>), <strong className="text-purple-300">Smart Shiksha</strong> (Hack Genesis 1st Runner-Up AI Platform deployed at <a href="https://byteforge-9k5k.onrender.com/" target="_blank" rel="noopener noreferrer" className="underline text-purple-400 hover:text-purple-300">byteforge-9k5k.onrender.com</a>), and <strong className="text-amber-300">WhatsApp AI Agent</strong>.
           </p>
 
           <div className="pt-2 flex justify-center">

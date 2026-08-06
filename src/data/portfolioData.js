@@ -58,7 +58,7 @@ export const portfolioData = {
         "Secured 1st Runner-Up at Hack Genesis Hackathon, IITRAM (2026).",
       ],
       githubUrl: "https://github.com/sayja-yug",
-      demoUrl: "https://github.com/sayja-yug",
+      demoUrl: "https://byteforge-9k5k.onrender.com/",
     },
     {
       id: "whatsapp-ai-agent",
