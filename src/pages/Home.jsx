@@ -1,23 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Activity, Terminal, FileText, Mail, Gauge, Github, Linkedin, Cpu, HeartPulse } from 'lucide-react';
+import { ArrowRight, Briefcase, Award, Terminal, Github, Linkedin, CheckCircle2, ShieldCheck, ExternalLink } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import SectionHeading from '../components/common/SectionHeading';
-import ProjectCard from '../components/common/ProjectCard';
-import SwasthyaTriageDemo from '../components/interactive/SwasthyaTriageDemo';
+import SkillsExplorer from '../components/interactive/SkillsExplorer';
 import Card3D from '../components/3d/Card3D';
 import YugDoodleViewer from '../components/3d/YugDoodleViewer';
 
 export const Home = () => {
-  const leadProject = portfolioData.projects.find((p) => p.isLead) || portfolioData.projects[0];
-  const otherProjects = portfolioData.projects.filter((p) => !p.isLead);
-  const flyrankExperience = portfolioData.experience[0];
+  const { personal, experience, certificates } = portfolioData;
 
   return (
     <div className="space-y-24 py-8 sm:py-12 relative z-10 text-white font-sans">
       
-      {/* 3D CYBERNETIC HERO SECTION */}
+      {/* HERO SECTION */}
       <section className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
@@ -27,7 +24,7 @@ export const Home = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-7 space-y-6"
           >
-            {/* Holographic Status Pill */}
+            {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-semibold shadow-lg shadow-cyan-500/10">
               <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
               <span>Available for Machine Learning Engineer Roles</span>
@@ -36,29 +33,29 @@ export const Home = () => {
             {/* Name & Title */}
             <div className="space-y-2">
               <span className="font-mono text-sm text-cyan-400 font-bold tracking-widest uppercase block">
-                Machine Learning Engineering Portfolio
+                Machine Learning Engineering Dashboard
               </span>
               <h1 className="text-4xl sm:text-6xl font-heading font-extrabold text-white tracking-tight leading-[1.1]">
-                <span className="text-gradient-cyan">{portfolioData.personal.name}</span>
+                <span className="text-gradient-cyan">{personal.name}</span>
               </h1>
               <p className="text-xl sm:text-2xl font-heading font-semibold text-purple-300">
-                {portfolioData.personal.title}
+                {personal.title}
               </p>
             </div>
 
             {/* Core Mission Glass Card */}
-            <Card3D maxTilt={6} className="p-6">
+            <Card3D maxTilt={4} className="p-6">
               <span className="font-mono text-xs text-cyan-400 font-bold uppercase tracking-wider block mb-2">
                 Core Technical Engineering Mission
               </span>
               <p className="text-lg font-heading font-semibold text-slate-100 leading-relaxed">
-                "{portfolioData.personal.claim}"
+                "{personal.claim}"
               </p>
             </Card3D>
 
             {/* Subtext Summary */}
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-sans">
-              Specializing in deep learning architecture design, multimodal diagnostic triage, ONNX model quantization, and low-latency edge/cloud inference optimization (PyTorch, TensorRT, FastAPI).
+              {personal.summary}
             </p>
 
             {/* Social & CTA Action Buttons */}
@@ -67,12 +64,12 @@ export const Home = () => {
                 to="/projects"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-mono font-bold text-sm hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5"
               >
-                <span>Explore 3D Machine Learning Projects</span>
+                <span>View All Machine Learning Projects</span>
                 <ArrowRight className="w-4 h-4 text-slate-950" />
               </Link>
 
               <a
-                href={portfolioData.personal.github}
+                href={personal.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 font-mono text-xs font-bold text-white hover:border-cyan-400 hover:text-cyan-300 transition-all"
@@ -82,7 +79,7 @@ export const Home = () => {
               </a>
 
               <a
-                href={portfolioData.personal.linkedin}
+                href={personal.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 font-mono text-xs font-bold text-white hover:border-purple-400 hover:text-purple-300 transition-all"
@@ -92,11 +89,11 @@ export const Home = () => {
               </a>
             </div>
 
-            {/* Quick Cyber Stats Bar */}
+            {/* Quick Stats Bar */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-800 font-mono text-xs">
               <div>
-                <span className="text-slate-400 block">Role</span>
-                <span className="text-cyan-300 font-bold text-sm">ML Engineer</span>
+                <span className="text-slate-400 block">Primary Domain</span>
+                <span className="text-cyan-300 font-bold text-sm">Machine Learning</span>
               </div>
               <div>
                 <span className="text-slate-400 block">Frameworks</span>
@@ -113,7 +110,7 @@ export const Home = () => {
             </div>
           </motion.div>
 
-          {/* Right Column: Cybernetic Doodle Avatar Box */}
+          {/* Right Column: Clean Yug Sayja Profile Card */}
           <div className="lg:col-span-5">
             <YugDoodleViewer />
           </div>
@@ -121,82 +118,143 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* FEATURED LEAD PROJECT SHOWCASE: SWASTHYACARE */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Primary Portfolio Showcase"
-          title="Lead Project: SwasthyaCare AI Triage"
-          description="Multimodal diagnostic platform combining MobileNetV3 with quantized clinical NLP transformers for low-latency offline execution."
-          className="mb-8"
-        />
-
-        <Card3D maxTilt={4} className="p-6 sm:p-10 space-y-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-6">
-            <div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-bold mb-2">
-                <HeartPulse className="w-3.5 h-3.5 text-cyan-400" />
-                Featured Lead ML Case Study
-              </span>
-              <h3 className="text-2xl sm:text-4xl font-heading font-bold text-white">
-                {leadProject.title}
-              </h3>
-              <p className="text-cyan-400 font-mono text-xs mt-1">
-                {leadProject.subtitle}
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Link
-                to={`/projects/${leadProject.id}`}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-mono text-xs font-bold hover:bg-cyan-400 transition-colors shadow-lg shadow-cyan-500/20"
-              >
-                <span>Full Case Study & 3D Interactive Demo</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+      {/* WORK EXPERIENCE DASHBOARD */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Briefcase className="w-5 h-5 text-cyan-400" />
+            <h2 className="text-2xl font-heading font-bold text-white">
+              Professional Work Experience
+            </h2>
           </div>
+          <Link to="/about" className="font-mono text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+            View Full Background <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
 
-          {/* Results Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {leadProject.results.map((res, i) => (
-              <div key={i} className="p-4 rounded-lg bg-slate-950/80 border border-slate-800 font-mono">
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
-                  {res.label}
-                </span>
-                <span className="text-2xl font-bold text-cyan-400 mt-1 block">
-                  {res.value}
-                </span>
-                <span className="text-xs text-slate-300 font-sans mt-1 block">
-                  {res.description}
-                </span>
+        {experience.map((exp, idx) => (
+          <Card3D key={idx} maxTilt={3} className="p-6 sm:p-8 space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800">
+              <div>
+                <h3 className="text-xl font-heading font-bold text-white">{exp.role}</h3>
+                <p className="text-sm font-mono text-cyan-400 font-semibold">{exp.company} • {exp.location}</p>
               </div>
-            ))}
-          </div>
+              <span className="px-3 py-1 rounded bg-slate-950 border border-slate-800 font-mono text-xs font-bold text-purple-300">
+                {exp.period} • {exp.type}
+              </span>
+            </div>
 
-          {/* Embedded Interactive Healthcare Diagnostic Simulator */}
-          <div className="pt-6 border-t border-slate-800">
-            <span className="font-mono text-xs font-bold text-cyan-400 uppercase tracking-wider block mb-3">
-              Live Multimodal Diagnostic & Triage Simulator
-            </span>
-            <SwasthyaTriageDemo />
-          </div>
-        </Card3D>
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold text-cyan-400 uppercase tracking-wider block">
+                Key Engineering Highlights
+              </span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {exp.highlights.map((item, hIdx) => (
+                  <div key={hIdx} className="flex items-start gap-2.5 p-3.5 rounded-lg bg-slate-950/80 border border-slate-800 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                    <span className="text-slate-300 font-sans">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-2">
+              <span className="font-mono text-xs font-bold text-slate-400 mr-2">Technologies Used:</span>
+              {exp.techStack.map((tech, tIdx) => (
+                <span key={tIdx} className="px-2.5 py-0.5 rounded bg-slate-950 border border-slate-800 font-mono text-xs text-cyan-300">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </Card3D>
+        ))}
       </section>
 
-      {/* SECONDARY PROJECTS GRID */}
+      {/* TECHNICAL STACK & SKILLS DASHBOARD */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Applied Machine Learning Engineering"
-          title="Machine Learning Projects Showcase"
-          description="Machine learning applications and deep neural networks engineered by Yug Sayja."
-          className="mb-8"
-        />
+        <SkillsExplorer />
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {otherProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+      {/* VERIFIED CERTIFICATIONS DASHBOARD */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Award className="w-5 h-5 text-cyan-400" />
+            <h2 className="text-2xl font-heading font-bold text-white">
+              Verified Machine Learning Credentials
+            </h2>
+          </div>
+          <Link to="/certificates" className="font-mono text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+            View All Certificates <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {certificates.map((cert) => (
+            <Card3D key={cert.id} maxTilt={5} className="p-6 space-y-4 flex flex-col justify-between h-full">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="w-9 h-9 rounded bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">
+                    <CheckCircle2 className="w-3 h-3 text-cyan-400" />
+                    {cert.badgeText}
+                  </span>
+                </div>
+
+                <h3 className="font-heading font-bold text-base text-white">
+                  {cert.title}
+                </h3>
+
+                <div className="space-y-0.5 font-mono text-xs">
+                  <span className="text-cyan-400 font-semibold block">{cert.issuer}</span>
+                  <span className="text-slate-400 block">{cert.date}</span>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-slate-800">
+                <a
+                  href={cert.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  <span>Verify Credential Link</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </Card3D>
           ))}
         </div>
+      </section>
+
+      {/* PROJECTS PORTFOLIO DIRECT CALLOUT */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Card3D maxTilt={3} className="p-8 sm:p-10 bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border border-cyan-500/30 text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 font-mono text-xs font-bold">
+            <Terminal className="w-4 h-4" />
+            <span>Machine Learning Case Studies & Interactive Demos</span>
+          </div>
+
+          <h3 className="text-2xl sm:text-4xl font-heading font-bold text-white max-w-3xl mx-auto">
+            Explore Yug Sayja's Machine Learning Engineering Projects
+          </h3>
+
+          <p className="text-slate-300 text-sm sm:text-base font-sans max-w-2xl mx-auto leading-relaxed">
+            Detailed case studies including <strong className="text-cyan-300">SwasthyaCare</strong> (deployed live at <a href="https://swasthyacare.onrender.com/" target="_blank" rel="noopener noreferrer" className="underline text-cyan-400 hover:text-cyan-300">swasthyacare.onrender.com</a>) and <strong className="text-purple-300">Smart Shiksha</strong> with full methodology, dataset distribution, and interactive demos.
+          </p>
+
+          <div className="pt-2 flex justify-center">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-mono font-bold text-sm hover:from-cyan-400 hover:to-blue-500 shadow-xl shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5"
+            >
+              <span>Explore Projects Showcase</span>
+              <ArrowRight className="w-4 h-4 text-slate-950" />
+            </Link>
+          </div>
+        </Card3D>
       </section>
 
     </div>

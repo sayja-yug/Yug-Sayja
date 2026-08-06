@@ -54,7 +54,7 @@ export const portfolioData = {
         { title: "Diagnostic Triage Interface", description: "Clean UI displaying risk priority score and diagnostic confidence", type: "UI Interface" },
       ],
       githubUrl: "https://github.com/sayja-yug",
-      demoUrl: "https://github.com/sayja-yug",
+      demoUrl: "https://swasthyacare.onrender.com/",
       lessonsLearned: [
         "Deployability in low-resource environments requires strict offline capability. ONNX Runtime CPU optimization enabled 4x faster execution than raw PyTorch CPU inference.",
         "Focal Loss significantly improved prediction accuracy on critical high-urgency cases that were underrepresented in the dataset.",
