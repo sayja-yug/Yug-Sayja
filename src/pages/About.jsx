@@ -19,7 +19,7 @@ export const About = () => {
       <SectionHeading
         eyebrow="Background & Credentials"
         title={`About ${personal.name}`}
-        description="Computer Vision & Machine Learning Engineer focused on deep learning architecture design, explainable AI, and latency optimization."
+        description="Machine Learning Engineer focused on deep learning architecture design, explainable AI, and latency optimization."
       />
 
       {/* Profile Overview Card */}

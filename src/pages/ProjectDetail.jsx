@@ -3,7 +3,6 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Github, ExternalLink, Activity, Database, Cpu, BarChart3, CheckCircle2, AlertTriangle, Layers, PlayCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import MetricBadge from '../components/common/MetricBadge';
-import ChestXRaySimulator from '../components/interactive/ChestXRaySimulator';
 import LatencyBenchmarkExplorer from '../components/interactive/LatencyBenchmarkExplorer';
 import SwasthyaTriageDemo from '../components/interactive/SwasthyaTriageDemo';
 import SmartShikshaOCRDemo from '../components/interactive/SmartShikshaOCRDemo';
@@ -137,16 +136,6 @@ export const ProjectDetail = () => {
         {/* INTERACTIVE DEMO TAB */}
         {activeTab === 'demo' && (
           <div className="space-y-8">
-            {project.id === 'chest-xray-disease-detection' && (
-              <>
-                <ChestXRaySimulator />
-                <div className="pt-6 border-t border-border">
-                  <h4 className="font-heading font-bold text-lg text-dark mb-4">Model Quantization & Latency Benchmark Explorer</h4>
-                  <LatencyBenchmarkExplorer />
-                </div>
-              </>
-            )}
-
             {project.id === 'swasthya-care' && (
               <>
                 <SwasthyaTriageDemo />

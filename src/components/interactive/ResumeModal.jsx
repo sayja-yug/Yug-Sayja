@@ -23,7 +23,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
           <div className="flex items-center gap-3">
             <a
               href={personal.resumeUrl}
-              download="MLE_Resume.pdf"
+              download="Yug_Sayja_MLE_Resume.pdf"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-primary text-white font-mono text-xs font-semibold hover:bg-primary-hover transition-colors"
             >
               <Download className="w-3.5 h-3.5 text-accent" />
@@ -47,15 +47,15 @@ export const ResumeModal = ({ isOpen, onClose }) => {
             <h1 className="text-2xl sm:text-3xl font-heading font-bold text-gray-900 tracking-tight">
               {personal.name}
             </h1>
-            <p className="font-mono text-sm text-accent font-semibold">{personal.title}</p>
+            <p className="font-mono text-sm text-cyan-600 font-semibold">{personal.title}</p>
             <div className="flex flex-wrap items-center gap-4 font-mono text-xs text-gray-600 pt-1">
               <span>Email: {personal.email}</span>
               <span>•</span>
               <span>Location: {personal.location}</span>
               <span>•</span>
-              <span>GitHub: github.com</span>
+              <span>GitHub: github.com/sayja-yug</span>
               <span>•</span>
-              <span>LinkedIn: linkedin.com</span>
+              <span>LinkedIn: linkedin.com/in/yug-sayja-435a45382</span>
             </div>
           </div>
 
@@ -76,10 +76,10 @@ export const ResumeModal = ({ isOpen, onClose }) => {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-xs">
               <div>
-                <strong className="text-gray-900">Computer Vision:</strong> YOLOv8, DenseNet, ResNet, Grad-CAM, OpenCV, CLAHE
+                <strong className="text-gray-900">Machine Learning:</strong> Neural Networks, Transformers, YOLOv8, ResNet, MobileNetV3, DistilBERT
               </div>
               <div>
-                <strong className="text-gray-900">Frameworks:</strong> PyTorch 2.x, ONNX Runtime, Scikit-Learn, Albumentations
+                <strong className="text-gray-900">Frameworks:</strong> PyTorch 2.x, ONNX Runtime, Scikit-Learn, TensorFlow
               </div>
               <div>
                 <strong className="text-gray-900">Optimization:</strong> Post-Training Quantization (INT8), FP16, Latency Benchmarking
@@ -113,13 +113,13 @@ export const ResumeModal = ({ isOpen, onClose }) => {
           {/* Selected Projects */}
           <div className="space-y-3">
             <h2 className="font-mono text-xs font-bold text-gray-500 uppercase tracking-wider">
-              Lead Machine Learning Projects
+              Machine Learning Projects
             </h2>
             {projects.map((proj) => (
               <div key={proj.id} className="space-y-1">
                 <div className="flex justify-between font-mono text-xs">
                   <strong className="text-gray-900">{proj.title}</strong>
-                  <span className="text-accent font-semibold">{proj.results[0]?.label}: {proj.results[0]?.value}</span>
+                  <span className="text-cyan-700 font-semibold">{proj.results[0]?.label}: {proj.results[0]?.value}</span>
                 </div>
                 <p className="text-xs text-gray-600 font-sans">{proj.shortDescription}</p>
               </div>

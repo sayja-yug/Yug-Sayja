@@ -175,7 +175,7 @@ export const Contact = () => {
                     >
                       <option value="MLE Internship">Machine Learning Internship</option>
                       <option value="Entry-Level MLE">Entry-Level Machine Learning Engineer</option>
-                      <option value="Computer Vision Specialist">Computer Vision Engineer</option>
+                      <option value="Senior MLE">Senior Machine Learning Engineer</option>
                       <option value="General Inquiry">Technical Discussion</option>
                     </select>
                   </div>

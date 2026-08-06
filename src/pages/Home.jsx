@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, ShieldCheck, ExternalLink, Activity, Sparkles, Terminal, FileText, Mail, Gauge, Github, Linkedin, Cpu } from 'lucide-react';
+import { ArrowRight, Activity, Terminal, FileText, Mail, Gauge, Github, Linkedin, Cpu, HeartPulse } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import SectionHeading from '../components/common/SectionHeading';
 import ProjectCard from '../components/common/ProjectCard';
-import ChestXRaySimulator from '../components/interactive/ChestXRaySimulator';
+import SwasthyaTriageDemo from '../components/interactive/SwasthyaTriageDemo';
 import LatencyBenchmarkExplorer from '../components/interactive/LatencyBenchmarkExplorer';
 import Card3D from '../components/3d/Card3D';
 import Model3DViewer from '../components/3d/Model3DViewer';
@@ -59,7 +59,7 @@ export const Home = () => {
 
             {/* Subtext Summary */}
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-sans">
-              Specializing in medical image classification, explainable AI (Grad-CAM), multimodal clinical diagnostic fusion, and model latency optimization (PyTorch, ONNX, TensorRT).
+              Specializing in deep learning architecture design, multimodal diagnostic triage, ONNX model quantization, and low-latency edge/cloud inference optimization (PyTorch, TensorRT, FastAPI).
             </p>
 
             {/* Social & CTA Action Buttons */}
@@ -89,15 +89,15 @@ export const Home = () => {
                 className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 font-mono text-xs font-bold text-white hover:border-purple-400 hover:text-purple-300 transition-all"
               >
                 <Linkedin className="w-4 h-4 text-purple-400" />
-                <span>LinkedIn</span>
+                <span>LinkedIn Profile</span>
               </a>
             </div>
 
             {/* Quick Cyber Stats Bar */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-800 font-mono text-xs">
               <div>
-                <span className="text-slate-400 block">Primary Focus</span>
-                <span className="text-cyan-300 font-bold text-sm">Computer Vision</span>
+                <span className="text-slate-400 block">Role</span>
+                <span className="text-cyan-300 font-bold text-sm">ML Engineer</span>
               </div>
               <div>
                 <span className="text-slate-400 block">Frameworks</span>
@@ -122,12 +122,12 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* FEATURED LEAD PROJECT SHOWCASE */}
+      {/* FEATURED LEAD PROJECT SHOWCASE: SWASTHYACARE */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Primary Portfolio Showcase"
-          title="Lead Project: Chest X-Ray Disease Detection"
-          description="Multi-label classification model trained on 100k+ radiograph scans with patient-disjoint evaluation and Grad-CAM explainable AI."
+          title="Lead Project: SwasthyaCare AI Triage"
+          description="Multimodal diagnostic platform combining MobileNetV3 with quantized clinical NLP transformers for low-latency offline execution."
           className="mb-8"
         />
 
@@ -135,7 +135,7 @@ export const Home = () => {
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-6">
             <div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-bold mb-2">
-                <Activity className="w-3.5 h-3.5 text-cyan-400" />
+                <HeartPulse className="w-3.5 h-3.5 text-cyan-400" />
                 Featured Lead ML Case Study
               </span>
               <h3 className="text-2xl sm:text-4xl font-heading font-bold text-white">
@@ -174,12 +174,12 @@ export const Home = () => {
             ))}
           </div>
 
-          {/* Embedded Interactive Diagnostic Simulator */}
+          {/* Embedded Interactive Healthcare Diagnostic Simulator */}
           <div className="pt-6 border-t border-slate-800">
             <span className="font-mono text-xs font-bold text-cyan-400 uppercase tracking-wider block mb-3">
-              Interactive PyTorch + Grad-CAM Medical Radiograph Visualizer
+              Live Multimodal Diagnostic & Triage Simulator
             </span>
-            <ChestXRaySimulator />
+            <SwasthyaTriageDemo />
           </div>
         </Card3D>
       </section>
@@ -187,7 +187,7 @@ export const Home = () => {
       {/* INTERACTIVE MODEL LATENCY & QUANTIZATION SECTION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Model Latency & Performance Optimization"
+          eyebrow="Model Optimization & Latency"
           title="Interactive Quantization & Inference Speed Calculator"
           description="Explore latency, VRAM footprint reduction, and throughput across PyTorch FP32, ONNX FP16, and INT8 Post-Training Quantization."
           className="mb-8"
@@ -201,7 +201,7 @@ export const Home = () => {
         <SectionHeading
           eyebrow="Applied Machine Learning Engineering"
           title="Machine Learning Projects Showcase"
-          description="Computer vision models and multimodal diagnostic applications engineered by Yug Sayja."
+          description="Machine learning applications and deep neural networks engineered by Yug Sayja."
           className="mb-8"
         />
 

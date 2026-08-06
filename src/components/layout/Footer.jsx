@@ -21,7 +21,7 @@ export const Footer = () => {
               "{portfolioData.personal.claim}"
             </p>
             <p className="text-slate-400 text-xs font-mono">
-              Computer Vision • Explainable AI • PyTorch • Latency Optimization • ONNX
+              Machine Learning • Deep Learning • PyTorch • Latency Optimization • ONNX
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export const Footer = () => {
         {/* Footer Bottom */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-mono">
           <p>
-            © {new Date().getFullYear()} {portfolioData.personal.name}. Computer Vision & Machine Learning Engineer.
+            © {new Date().getFullYear()} {portfolioData.personal.name}. Machine Learning Engineer.
           </p>
           <p>
             Built with 3D Canvas, WebGL, React & Tailwind CSS.
