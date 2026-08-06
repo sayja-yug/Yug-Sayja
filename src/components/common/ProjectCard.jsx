@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Github, ExternalLink, Activity, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, Github, ExternalLink, Activity, Sparkles, Video } from 'lucide-react';
 import Card3D from '../3d/Card3D';
 
 export const ProjectCard = ({ project }) => {
-  const { id, isLead, title, subtitle, shortDescription, techStack, results, githubUrl, demoUrl, highlights } = project;
+  const { id, isLead, title, subtitle, shortDescription, techStack, results, githubUrl, demoUrl, isVideoDemo } = project;
 
   return (
     <Card3D maxTilt={6} className="h-full">
@@ -104,10 +104,10 @@ export const ProjectCard = ({ project }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-950 font-bold bg-cyan-400 hover:bg-cyan-300 px-3 py-1 rounded transition-colors inline-flex items-center gap-1 text-xs shadow-md shadow-cyan-400/20"
-                aria-label={`Live Demo for ${title}`}
+                aria-label={`Demo Video for ${title}`}
               >
-                <ExternalLink className="w-3.5 h-3.5" />
-                <span>Live Demo</span>
+                {isVideoDemo ? <Video className="w-3.5 h-3.5" /> : <ExternalLink className="w-3.5 h-3.5" />}
+                <span>{isVideoDemo ? 'Watch Video' : 'Live Demo'}</span>
               </a>
             )}
           </div>

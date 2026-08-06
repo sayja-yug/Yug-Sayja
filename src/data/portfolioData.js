@@ -79,7 +79,9 @@ export const portfolioData = {
         "Designed scalable automation pipelines to improve business response efficiency and reduce manual effort.",
       ],
       githubUrl: "https://github.com/sayja-yug",
-      demoUrl: "https://github.com/sayja-yug",
+      demoUrl: "https://drive.google.com/file/d/1nMMqEWE8y_eO0xtnmE6HSiraOGrca7PV/view?usp=sharing",
+      videoEmbedUrl: "https://drive.google.com/file/d/1nMMqEWE8y_eO0xtnmE6HSiraOGrca7PV/preview",
+      isVideoDemo: true,
     },
   ],
 

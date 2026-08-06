@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, Github, ExternalLink, CheckCircle2, Cpu, Code2, Award, Activity } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, CheckCircle2, Video, PlayCircle, Activity } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import Card3D from '../components/3d/Card3D';
 
@@ -22,6 +22,8 @@ export const ProjectDetail = () => {
     highlights,
     githubUrl,
     demoUrl,
+    videoEmbedUrl,
+    isVideoDemo,
   } = project;
 
   return (
@@ -71,8 +73,8 @@ export const ProjectDetail = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-cyan-400 text-slate-950 text-xs font-mono font-bold hover:bg-cyan-300 transition-colors shadow-lg shadow-cyan-400/20"
               >
-                <ExternalLink className="w-4 h-4" />
-                <span>Live Project Demo</span>
+                {isVideoDemo ? <Video className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
+                <span>{isVideoDemo ? 'Watch Google Drive Video' : 'Live Project Demo'}</span>
               </a>
             )}
           </div>
@@ -113,6 +115,40 @@ export const ProjectDetail = () => {
           </div>
         )}
       </Card3D>
+
+      {/* EMBEDDED DEMO VIDEO SECTION (if videoEmbedUrl exists) */}
+      {videoEmbedUrl && (
+        <Card3D maxTilt={2} className="p-6 sm:p-8 space-y-4 border-cyan-500/30">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div className="flex items-center gap-2">
+              <PlayCircle className="w-5 h-5 text-cyan-400" />
+              <h3 className="text-lg font-heading font-bold text-white">
+                Live Video Demonstration & Workflow Walkthrough
+              </h3>
+            </div>
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-bold hover:bg-cyan-500 hover:text-slate-950 transition-colors"
+            >
+              <span>Open in Google Drive</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          {/* Embedded Google Drive Video iFrame */}
+          <div className="relative rounded-xl overflow-hidden border border-slate-800 aspect-video bg-slate-950 shadow-2xl">
+            <iframe
+              src={videoEmbedUrl}
+              title={`${title} Live Video Demo`}
+              className="w-full h-full border-0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </Card3D>
+      )}
 
       {/* Problem & Key Highlights */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
