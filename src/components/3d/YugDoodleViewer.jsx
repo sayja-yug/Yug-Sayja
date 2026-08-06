@@ -1,27 +1,97 @@
 import React from 'react';
+import { Cpu, Activity, CheckCircle2, ShieldCheck, Terminal, Layers, Database, Sparkles, Server } from 'lucide-react';
+import Card3D from './Card3D';
 
 export const YugDoodleViewer = () => {
   return (
-    <div className="relative w-full flex items-center justify-center py-4">
-      
-      {/* Background Neon Glowing Aura Rings */}
-      <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-cyan-500/20 via-purple-500/20 to-blue-500/20 blur-3xl -z-10 animate-pulse"></div>
-      <div className="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full border border-cyan-500/30 -z-10 animate-[spin_20s_linear_infinite] opacity-60"></div>
-      <div className="absolute w-80 h-80 sm:w-[26rem] sm:h-[26rem] rounded-full border border-dashed border-purple-500/30 -z-10 animate-[spin_35s_linear_infinite_reverse] opacity-40"></div>
+    <Card3D maxTilt={4} className="w-full">
+      <div className="rounded-2xl p-6 sm:p-8 bg-slate-900/90 border border-cyan-500/30 backdrop-blur-xl shadow-2xl shadow-cyan-950/40 relative overflow-hidden text-white space-y-6">
+        
+        {/* Glow ambient background elements */}
+        <div className="absolute -top-24 -right-24 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-24 -left-24 w-60 h-60 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      {/* Main Hero Portrait Cutout (Clean, Card-Free & Tag-Free) */}
-      <div className="relative z-10 w-full max-w-sm sm:max-w-md aspect-[4/5] flex items-center justify-center">
-        <img
-          src="/yug_hero_portrait.png"
-          alt="Yug Sayja Machine Learning Engineer Hero Digital Portrait"
-          className="w-full h-full object-contain filter drop-shadow-[0_10px_25px_rgba(0,242,254,0.35)] transition-transform duration-500 hover:scale-105"
-        />
+        {/* Dashboard Title Header */}
+        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold shadow-md">
+              <Terminal className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-base font-heading font-extrabold text-white flex items-center gap-1.5">
+                <span>ML Pipeline & Stack</span>
+                <ShieldCheck className="w-4 h-4 text-cyan-400" />
+              </h3>
+              <span className="font-mono text-xs text-slate-400">
+                End-to-End System Engineering
+              </span>
+            </div>
+          </div>
 
-        {/* Bottom Smooth Blend Gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none"></div>
+          <span className="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 font-mono text-[11px] font-bold border border-cyan-400/30 flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            Production Ready
+          </span>
+        </div>
+
+        {/* Core ML Architecture Workflow Cards */}
+        <div className="space-y-3 font-mono text-xs">
+          
+          <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between hover:border-cyan-400/40 transition-colors">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded bg-cyan-500/10 text-cyan-400">
+                <Cpu className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-white font-bold block">Machine Learning & Deep Learning</span>
+                <span className="text-slate-400 text-[11px]">Scikit-learn, PyTorch, Pandas, NumPy</span>
+              </div>
+            </div>
+            <span className="text-cyan-400 font-bold text-[10px] uppercase">Active</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between hover:border-purple-400/40 transition-colors">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded bg-purple-500/10 text-purple-400">
+                <Server className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-white font-bold block">Backend & Full-Stack Systems</span>
+                <span className="text-slate-400 text-[11px]">Python, Django, PostgreSQL, Auth0</span>
+              </div>
+            </div>
+            <span className="text-purple-400 font-bold text-[10px] uppercase">Deployed</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between hover:border-amber-400/40 transition-colors">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded bg-amber-500/10 text-amber-400">
+                <Layers className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-white font-bold block">Agentic AI & Workflow Automation</span>
+                <span className="text-slate-400 text-[11px]">n8n, No-Code Pipelines, WhatsApp API</span>
+              </div>
+            </div>
+            <span className="text-amber-400 font-bold text-[10px] uppercase">Automated</span>
+          </div>
+
+        </div>
+
+        {/* Key Engineering Badges */}
+        <div className="pt-2 grid grid-cols-2 gap-2 font-mono text-[11px]">
+          <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-center">
+            <span className="text-slate-400 block text-[10px] uppercase">Academic Baseline</span>
+            <span className="text-cyan-300 font-bold block mt-0.5">IITRAM B.Tech CSE</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-center">
+            <span className="text-slate-400 block text-[10px] uppercase">Industry Role</span>
+            <span className="text-purple-300 font-bold block mt-0.5">FlyRank AI Intern</span>
+          </div>
+        </div>
+
       </div>
-
-    </div>
+    </Card3D>
   );
 };
 
