@@ -3,7 +3,6 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Github, ExternalLink, Activity, Database, Cpu, BarChart3, CheckCircle2, AlertTriangle, Layers, PlayCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import MetricBadge from '../components/common/MetricBadge';
-import LatencyBenchmarkExplorer from '../components/interactive/LatencyBenchmarkExplorer';
 import SwasthyaTriageDemo from '../components/interactive/SwasthyaTriageDemo';
 import SmartShikshaOCRDemo from '../components/interactive/SmartShikshaOCRDemo';
 
@@ -136,25 +135,8 @@ export const ProjectDetail = () => {
         {/* INTERACTIVE DEMO TAB */}
         {activeTab === 'demo' && (
           <div className="space-y-8">
-            {project.id === 'swasthya-care' && (
-              <>
-                <SwasthyaTriageDemo />
-                <div className="pt-6 border-t border-border">
-                  <h4 className="font-heading font-bold text-lg text-dark mb-4">Model Latency Explorer</h4>
-                  <LatencyBenchmarkExplorer />
-                </div>
-              </>
-            )}
-
-            {project.id === 'smart-shiksha' && (
-              <>
-                <SmartShikshaOCRDemo />
-                <div className="pt-6 border-t border-border">
-                  <h4 className="font-heading font-bold text-lg text-dark mb-4">Edge Inference Explorer</h4>
-                  <LatencyBenchmarkExplorer />
-                </div>
-              </>
-            )}
+            {project.id === 'swasthya-care' && <SwasthyaTriageDemo />}
+            {project.id === 'smart-shiksha' && <SmartShikshaOCRDemo />}
           </div>
         )}
 

@@ -6,7 +6,6 @@ import { portfolioData } from '../data/portfolioData';
 import SectionHeading from '../components/common/SectionHeading';
 import ProjectCard from '../components/common/ProjectCard';
 import SwasthyaTriageDemo from '../components/interactive/SwasthyaTriageDemo';
-import LatencyBenchmarkExplorer from '../components/interactive/LatencyBenchmarkExplorer';
 import Card3D from '../components/3d/Card3D';
 import Model3DViewer from '../components/3d/Model3DViewer';
 
@@ -182,18 +181,6 @@ export const Home = () => {
             <SwasthyaTriageDemo />
           </div>
         </Card3D>
-      </section>
-
-      {/* INTERACTIVE MODEL LATENCY & QUANTIZATION SECTION */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Model Optimization & Latency"
-          title="Interactive Quantization & Inference Speed Calculator"
-          description="Explore latency, VRAM footprint reduction, and throughput across PyTorch FP32, ONNX FP16, and INT8 Post-Training Quantization."
-          className="mb-8"
-        />
-
-        <LatencyBenchmarkExplorer />
       </section>
 
       {/* SECONDARY PROJECTS GRID */}
