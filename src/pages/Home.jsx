@@ -7,7 +7,7 @@ import SectionHeading from '../components/common/SectionHeading';
 import ProjectCard from '../components/common/ProjectCard';
 import SwasthyaTriageDemo from '../components/interactive/SwasthyaTriageDemo';
 import Card3D from '../components/3d/Card3D';
-import Model3DViewer from '../components/3d/Model3DViewer';
+import YugDoodleViewer from '../components/3d/YugDoodleViewer';
 
 export const Home = () => {
   const leadProject = portfolioData.projects.find((p) => p.isLead) || portfolioData.projects[0];
@@ -113,9 +113,9 @@ export const Home = () => {
             </div>
           </motion.div>
 
-          {/* Right Column: 3D Holographic Model Projection Box */}
+          {/* Right Column: Cybernetic Doodle Avatar Box */}
           <div className="lg:col-span-5">
-            <Model3DViewer />
+            <YugDoodleViewer />
           </div>
 
         </div>
