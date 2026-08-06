@@ -224,37 +224,49 @@ export const Home = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {certificates.filter((c) => c.featured).map((cert) => (
-            <Card3D key={cert.id} maxTilt={5} className="p-6 space-y-4 flex flex-col justify-between h-full">
+            <Card3D key={cert.id} maxTilt={5} className="p-5 space-y-4 flex flex-col justify-between h-full group">
               <div className="space-y-3">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold">
-                    <Award className="w-5 h-5" />
+                <Link to="/certificates" className="block relative rounded-xl overflow-hidden border border-slate-800 group-hover:border-cyan-500/50 bg-slate-950 aspect-[4/3] shadow-inner">
+                  <img
+                    src={cert.imageUrl}
+                    alt={cert.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="px-3 py-1 rounded bg-cyan-400 text-slate-950 font-mono text-xs font-bold shadow-md">
+                      View Certificate
+                    </span>
                   </div>
+                </Link>
+
+                <div className="flex items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">
                     <CheckCircle2 className="w-3 h-3 text-cyan-400" />
                     {cert.badgeText}
                   </span>
+                  <span className="text-[11px] font-mono text-slate-400">{cert.date}</span>
                 </div>
 
                 <h3 className="font-heading font-bold text-base text-white leading-snug">
                   {cert.title}
                 </h3>
-
-                <div className="space-y-0.5 font-mono text-xs">
-                  <span className="text-cyan-400 font-semibold block">{cert.issuer}</span>
-                  <span className="text-slate-400 block">{cert.date}</span>
-                </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-800">
+              <div className="pt-3 border-t border-slate-800 flex items-center justify-between font-mono text-xs">
+                <Link
+                  to="/certificates"
+                  className="font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  Inspect Certificate
+                </Link>
                 <a
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
+                  className="text-slate-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-1"
                 >
-                  <span>Verify Credential Link</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Coursera</span>
+                  <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
             </Card3D>
