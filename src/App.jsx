@@ -8,16 +8,20 @@ import ProjectDetail from './pages/ProjectDetail';
 import About from './pages/About';
 import Certificates from './pages/Certificates';
 import Contact from './pages/Contact';
+import NeuralBackground3D from './components/3d/NeuralBackground3D';
 
 export function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-bg text-dark font-sans selection:bg-accent/20 selection:text-dark">
+      <div className="min-h-screen flex flex-col bg-cyber-void text-white font-sans selection:bg-cyan-500/30 selection:text-cyan-300 relative overflow-x-hidden">
+        {/* Interactive 3D WebGL Neural Background Canvas */}
+        <NeuralBackground3D />
+
         {/* Persistent Top Navigation Bar */}
         <Navbar />
 
         {/* Main Route Views */}
-        <main className="flex-grow">
+        <main className="flex-grow relative z-10">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />

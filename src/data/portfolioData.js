@@ -1,16 +1,16 @@
 export const portfolioData = {
   personal: {
-    name: "Applied Machine Learning Engineer",
+    name: "Yug Sayja",
     title: "Computer Vision & Machine Learning Engineer",
-    claim: "I build practical machine learning solutions that solve real-world problems through computer vision and applied AI.",
-    cta: "Invite me for a Machine Learning Engineer internship or entry-level interview.",
-    email: import.meta.env.VITE_CONTACT_EMAIL || "contact@mle-portfolio.com",
-    github: import.meta.env.VITE_GITHUB_URL || "https://github.com/sayja-yug/my-protfolio-website",
-    linkedin: import.meta.env.VITE_LINKEDIN_URL || "https://linkedin.com",
+    claim: "I build high-performance computer vision systems, deep learning architectures, and low-latency edge AI solutions that solve complex real-world challenges.",
+    cta: "Invite Yug Sayja for a Machine Learning Engineer internship or entry-level role.",
+    email: import.meta.env.VITE_CONTACT_EMAIL || "yugsayja@gmail.com",
+    github: import.meta.env.VITE_GITHUB_URL || "https://github.com/sayja-yug",
+    linkedin: import.meta.env.VITE_LINKEDIN_URL || "https://www.linkedin.com/in/yug-sayja-435a45382",
     resumeUrl: import.meta.env.VITE_RESUME_URL || "/resume.pdf",
     location: import.meta.env.VITE_LOCATION || "India",
-    summary: "Machine Learning Engineer specializing in computer vision, deep learning architecture design, and efficient edge/cloud inference. Experienced in training medical imaging models, building multimodal diagnostics, and deploying low-latency vision applications.",
-    careerGoals: "Aiming to join a forward-thinking AI team as a Machine Learning Engineering Intern or Entry-Level Engineer, where I can build reliable, scalable vision systems and push real-world AI applications from research to production.",
+    summary: "Machine Learning Engineer specializing in computer vision, deep learning architecture design, explainable AI (Grad-CAM), and low-latency edge/cloud inference optimization (PyTorch, ONNX, TensorRT). Experienced in training medical diagnostic models and building real-time vision pipelines.",
+    careerGoals: "Driven to join an innovative AI team as a Machine Learning Engineering Intern or Entry-Level MLE, building production-grade computer vision models and accelerating deep neural networks from research to edge deployment.",
   },
   
   projects: [
@@ -57,7 +57,7 @@ export const portfolioData = {
         { title: "Multi-Class ROC Curves", description: "Comparative AUC curves across all 14 thoracic disease categories", type: "Evaluation Artifact" },
         { title: "Confusion Matrix / Threshold Analysis", description: "Precision-Recall trade-offs at varying decision thresholds", type: "Metrics" },
       ],
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/sayja-yug",
       demoUrl: "https://colab.research.google.com",
       lessonsLearned: [
         "Patient-level data leakage can artificially boost validation AUC by 7-9%. Always split datasets by patient ID, not frame ID.",
@@ -104,7 +104,7 @@ export const portfolioData = {
         { title: "System Architecture Diagram", description: "Multimodal fusion of visual and textual clinical inputs", type: "Architecture" },
         { title: "Diagnostic Triage Interface", description: "Clean UI displaying risk priority score and diagnostic confidence", type: "UI Interface" },
       ],
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/sayja-yug",
       demoUrl: "https://github.com",
       lessonsLearned: [
         "Deployability in low-resource environments requires strict offline capability. ONNX Runtime CPU optimization enabled 4x faster execution than raw PyTorch CPU inference.",
@@ -149,7 +149,7 @@ export const portfolioData = {
         { title: "Real-time Boundary Detection", description: "Bounding boxes outlining document corners and handwritten paragraphs", type: "Detection Artifact" },
         { title: "Browser In-Memory Execution", description: "Live ONNX WebAssembly performance telemetry bar", type: "System Metrics" },
       ],
-      githubUrl: "https://github.com",
+      githubUrl: "https://github.com/sayja-yug",
       demoUrl: "https://github.com",
       lessonsLearned: [
         "Quantization-aware training (QAT) preserved 99.1% of baseline mAP while reducing memory footprint by 74%, enabling smooth browser execution.",

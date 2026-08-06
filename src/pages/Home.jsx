@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, ShieldCheck, ExternalLink, Activity, Sparkles, Terminal, FileText, Mail, Gauge } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, ExternalLink, Activity, Sparkles, Terminal, FileText, Mail, Gauge, Github, Linkedin, Cpu } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import SectionHeading from '../components/common/SectionHeading';
 import ProjectCard from '../components/common/ProjectCard';
 import ChestXRaySimulator from '../components/interactive/ChestXRaySimulator';
 import LatencyBenchmarkExplorer from '../components/interactive/LatencyBenchmarkExplorer';
+import Card3D from '../components/3d/Card3D';
+import Model3DViewer from '../components/3d/Model3DViewer';
 
 export const Home = () => {
   const leadProject = portfolioData.projects.find((p) => p.isLead) || portfolioData.projects[0];
@@ -14,104 +16,132 @@ export const Home = () => {
   const flyrankExperience = portfolioData.experience[0];
 
   return (
-    <div className="space-y-20 py-8 sm:py-12">
+    <div className="space-y-24 py-8 sm:py-12 relative z-10 text-white font-sans">
       
-      {/* HERO SECTION */}
+      {/* 3D CYBERNETIC HERO SECTION */}
       <section className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="space-y-6 max-w-4xl"
-        >
-          {/* Status Pill */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent font-mono text-xs font-semibold">
-            <span className="w-2 h-2 rounded-full bg-accent animate-ping"></span>
-            <span>Available for MLE Internship & Entry-Level Roles</span>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-7 space-y-6"
+          >
+            {/* Holographic Status Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-semibold shadow-lg shadow-cyan-500/10">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+              <span>Available for Machine Learning Engineer Roles</span>
+            </div>
 
-          {/* Heading Claim */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold text-dark tracking-tight leading-[1.1]">
-            {portfolioData.personal.title}
-          </h1>
+            {/* Name & Title */}
+            <div className="space-y-2">
+              <span className="font-mono text-sm text-cyan-400 font-bold tracking-widest uppercase block">
+                Machine Learning Engineering Portfolio
+              </span>
+              <h1 className="text-4xl sm:text-6xl font-heading font-extrabold text-white tracking-tight leading-[1.1]">
+                <span className="text-gradient-cyan">{portfolioData.personal.name}</span>
+              </h1>
+              <p className="text-xl sm:text-2xl font-heading font-semibold text-purple-300">
+                {portfolioData.personal.title}
+              </p>
+            </div>
 
-          {/* Explicit Core Claim Box */}
-          <div className="p-5 sm:p-6 rounded-lg bg-bg-card border border-border border-l-4 border-l-primary shadow-sm space-y-2">
-            <span className="font-mono text-xs text-dark-subtle font-semibold uppercase tracking-wider block">
-              Core Technical Mission
-            </span>
-            <p className="text-lg sm:text-xl font-heading font-semibold text-primary">
-              "{portfolioData.personal.claim}"
+            {/* Core Mission Glass Card */}
+            <Card3D maxTilt={6} className="p-6">
+              <span className="font-mono text-xs text-cyan-400 font-bold uppercase tracking-wider block mb-2">
+                Core Technical Engineering Mission
+              </span>
+              <p className="text-lg font-heading font-semibold text-slate-100 leading-relaxed">
+                "{portfolioData.personal.claim}"
+              </p>
+            </Card3D>
+
+            {/* Subtext Summary */}
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-sans">
+              Specializing in medical image classification, explainable AI (Grad-CAM), multimodal clinical diagnostic fusion, and model latency optimization (PyTorch, ONNX, TensorRT).
             </p>
+
+            {/* Social & CTA Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-mono font-bold text-sm hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5"
+              >
+                <span>Explore 3D Machine Learning Projects</span>
+                <ArrowRight className="w-4 h-4 text-slate-950" />
+              </Link>
+
+              <a
+                href={portfolioData.personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 font-mono text-xs font-bold text-white hover:border-cyan-400 hover:text-cyan-300 transition-all"
+              >
+                <Github className="w-4 h-4 text-cyan-400" />
+                <span>GitHub Profile</span>
+              </a>
+
+              <a
+                href={portfolioData.personal.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 font-mono text-xs font-bold text-white hover:border-purple-400 hover:text-purple-300 transition-all"
+              >
+                <Linkedin className="w-4 h-4 text-purple-400" />
+                <span>LinkedIn</span>
+              </a>
+            </div>
+
+            {/* Quick Cyber Stats Bar */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-800 font-mono text-xs">
+              <div>
+                <span className="text-slate-400 block">Primary Focus</span>
+                <span className="text-cyan-300 font-bold text-sm">Computer Vision</span>
+              </div>
+              <div>
+                <span className="text-slate-400 block">Frameworks</span>
+                <span className="text-white font-bold text-sm">PyTorch & ONNX</span>
+              </div>
+              <div>
+                <span className="text-slate-400 block">Work Experience</span>
+                <span className="text-purple-300 font-bold text-sm">FlyRank AI Intern</span>
+              </div>
+              <div>
+                <span className="text-slate-400 block">Optimization</span>
+                <span className="text-emerald-400 font-bold text-sm">INT8 Quantization</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column: 3D Holographic Model Projection Box */}
+          <div className="lg:col-span-5">
+            <Model3DViewer />
           </div>
 
-          {/* Subtext Summary */}
-          <p className="text-dark-muted text-base sm:text-lg font-sans leading-relaxed max-w-3xl">
-            Focusing on medical image classification, multimodal diagnostics, and model latency optimization. 
-            Combining PyTorch deep learning architectures with patient-disjoint evaluation standards and ONNX runtime quantization.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-white font-sans font-medium text-sm hover:bg-primary-hover shadow-sm transition-all"
-            >
-              <span>Explore Machine Learning Projects</span>
-              <ArrowRight className="w-4 h-4 text-accent" />
-            </Link>
-
-            <a
-              href={`mailto:${portfolioData.personal.email}`}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-bg-card border border-border font-mono text-xs font-semibold text-dark hover:border-dark-subtle transition-all"
-            >
-              <Mail className="w-4 h-4 text-accent" />
-              <span>Contact for Interview</span>
-            </a>
-          </div>
-
-          {/* Quick Stats Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-border/80 text-xs font-mono">
-            <div>
-              <span className="text-dark-subtle block">Primary Domain</span>
-              <span className="text-dark font-bold text-sm">Computer Vision</span>
-            </div>
-            <div>
-              <span className="text-dark-subtle block">Core Framework</span>
-              <span className="text-dark font-bold text-sm">PyTorch 2.x</span>
-            </div>
-            <div>
-              <span className="text-dark-subtle block">Key Experience</span>
-              <span className="text-dark font-bold text-sm">FlyRank AI Intern</span>
-            </div>
-            <div>
-              <span className="text-dark-subtle block">Evaluation Focus</span>
-              <span className="text-dark font-bold text-sm">AUC-ROC & Latency</span>
-            </div>
-          </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* FEATURED LEAD PROJECT SECTION */}
+      {/* FEATURED LEAD PROJECT SHOWCASE */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Primary Portfolio Showcase"
           title="Lead Project: Chest X-Ray Disease Detection"
-          description="A multi-label classification model trained on 100k+ radiograph scans with patient-disjoint evaluation and Grad-CAM explainable AI."
+          description="Multi-label classification model trained on 100k+ radiograph scans with patient-disjoint evaluation and Grad-CAM explainable AI."
           className="mb-8"
         />
 
-        <div className="bg-bg-card border border-primary/30 rounded-xl p-6 sm:p-10 shadow-sm relative overflow-hidden space-y-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-6">
+        <Card3D maxTilt={4} className="p-6 sm:p-10 space-y-8">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-6">
             <div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-primary text-white font-mono text-xs font-semibold mb-2">
-                <Activity className="w-3.5 h-3.5 text-accent" />
-                Featured Lead Case Study
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-bold mb-2">
+                <Activity className="w-3.5 h-3.5 text-cyan-400" />
+                Featured Lead ML Case Study
               </span>
-              <h3 className="text-2xl sm:text-3xl font-heading font-bold text-dark">
+              <h3 className="text-2xl sm:text-4xl font-heading font-bold text-white">
                 {leadProject.title}
               </h3>
-              <p className="text-accent font-mono text-xs mt-1">
+              <p className="text-cyan-400 font-mono text-xs mt-1">
                 {leadProject.subtitle}
               </p>
             </div>
@@ -119,9 +149,9 @@ export const Home = () => {
             <div className="flex items-center gap-3">
               <Link
                 to={`/projects/${leadProject.id}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-primary text-white font-mono text-xs font-semibold hover:bg-primary-hover transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-mono text-xs font-bold hover:bg-cyan-400 transition-colors shadow-lg shadow-cyan-500/20"
               >
-                <span>Full Technical Deep Dive</span>
+                <span>Full Case Study & 3D Interactive Demo</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -130,64 +160,36 @@ export const Home = () => {
           {/* Results Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {leadProject.results.map((res, i) => (
-              <div key={i} className="p-4 rounded bg-bg-subtle border border-border">
-                <span className="text-[10px] font-mono text-dark-subtle uppercase tracking-wider block font-semibold">
+              <div key={i} className="p-4 rounded-lg bg-slate-950/80 border border-slate-800 font-mono">
+                <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
                   {res.label}
                 </span>
-                <span className="text-2xl font-mono font-bold text-primary mt-1 block">
+                <span className="text-2xl font-bold text-cyan-400 mt-1 block">
                   {res.value}
                 </span>
-                <span className="text-xs text-dark-muted font-sans mt-1 block">
+                <span className="text-xs text-slate-300 font-sans mt-1 block">
                   {res.description}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Architecture Highlights */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-border text-sm">
-            <div>
-              <span className="font-mono text-xs font-semibold text-accent uppercase block mb-1">
-                Architecture & Model
-              </span>
-              <p className="text-dark font-sans text-sm font-medium">
-                {leadProject.model.architecture}
-              </p>
-            </div>
-            <div>
-              <span className="font-mono text-xs font-semibold text-accent uppercase block mb-1">
-                Loss Function
-              </span>
-              <p className="text-dark font-sans text-sm font-medium">
-                {leadProject.model.lossFunction}
-              </p>
-            </div>
-            <div>
-              <span className="font-mono text-xs font-semibold text-accent uppercase block mb-1">
-                Evaluation Rigor
-              </span>
-              <p className="text-dark font-sans text-sm font-medium">
-                Patient-Disjoint Train/Val/Test Split (70/15/15)
-              </p>
-            </div>
-          </div>
-
           {/* Embedded Interactive Diagnostic Simulator */}
-          <div className="pt-6 border-t border-border">
-            <span className="font-mono text-xs font-bold text-accent uppercase tracking-wider block mb-3">
-              Live Interactive Visualizer Demo
+          <div className="pt-6 border-t border-slate-800">
+            <span className="font-mono text-xs font-bold text-cyan-400 uppercase tracking-wider block mb-3">
+              Interactive PyTorch + Grad-CAM Medical Radiograph Visualizer
             </span>
             <ChestXRaySimulator />
           </div>
-        </div>
+        </Card3D>
       </section>
 
       {/* INTERACTIVE MODEL LATENCY & QUANTIZATION SECTION */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Model Latency & Performance Optimization"
-          title="Interactive Model Optimization Telemetry"
-          description="Explore latency, memory footprint reduction, and throughput across PyTorch FP32, ONNX FP16, and INT8 Post-Training Quantization."
+          title="Interactive Quantization & Inference Speed Calculator"
+          description="Explore latency, VRAM footprint reduction, and throughput across PyTorch FP32, ONNX FP16, and INT8 Post-Training Quantization."
           className="mb-8"
         />
 
@@ -197,9 +199,9 @@ export const Home = () => {
       {/* SECONDARY PROJECTS GRID */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Applied AI Solutions"
-          title="Other Machine Learning Projects"
-          description="Practical computer vision and multimodal diagnostic applications built for edge devices and educational accessibility."
+          eyebrow="Applied Machine Learning Engineering"
+          title="Machine Learning Projects Showcase"
+          description="Computer vision models and multimodal diagnostic applications engineered by Yug Sayja."
           className="mb-8"
         />
 
@@ -207,115 +209,6 @@ export const Home = () => {
           {otherProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
-        </div>
-      </section>
-
-      {/* TECHNICAL COMPETENCIES / SKILLS MATRIX */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Technical Stack & Expertise"
-          title="Machine Learning Engineering Capabilities"
-          description="Built through hands-on project implementation, model benchmarking, and internship experience."
-          className="mb-8"
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {portfolioData.skills.categories.map((cat, idx) => (
-            <div key={idx} className="p-6 rounded-lg bg-bg-card border border-border space-y-4">
-              <div className="flex items-center gap-2 pb-3 border-b border-border">
-                <Terminal className="w-4 h-4 text-accent" />
-                <h3 className="font-heading font-bold text-base text-dark">
-                  {cat.name}
-                </h3>
-              </div>
-              <ul className="space-y-3">
-                {cat.skills.map((skill, sIdx) => (
-                  <li key={sIdx} className="space-y-0.5">
-                    <span className="text-sm font-sans font-semibold text-dark block">
-                      {skill.name}
-                    </span>
-                    <span className="text-xs font-mono text-dark-muted block">
-                      {skill.detail}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* FLYRANK EXPERIENCE HIGHLIGHT */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-bg-subtle rounded-xl border border-border p-6 sm:p-8 space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-border">
-            <div>
-              <span className="text-xs font-mono text-accent font-semibold uppercase tracking-wider block">
-                Work Experience Highlight
-              </span>
-              <h3 className="text-xl sm:text-2xl font-heading font-bold text-dark mt-1">
-                {flyrankExperience.role} @ {flyrankExperience.company}
-              </h3>
-              <span className="text-xs font-mono text-dark-subtle">
-                {flyrankExperience.period} • {flyrankExperience.type}
-              </span>
-            </div>
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-primary hover:text-accent transition-colors"
-            >
-              <span>View Full Experience & About</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {flyrankExperience.highlights.map((highlight, hIdx) => (
-              <div key={hIdx} className="flex items-start gap-3 p-3 rounded bg-bg border border-border/60">
-                <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <p className="text-sm font-sans text-dark-muted leading-relaxed">
-                  {highlight}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* RECRUITER CALL TO ACTION */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-primary text-white rounded-xl p-8 sm:p-12 text-center space-y-6 shadow-md">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-white/10 text-accent font-mono text-xs font-semibold">
-            <ShieldCheck className="w-4 h-4" />
-            Ready for Technical Interview & Coding Assessment
-          </span>
-
-          <h2 className="text-2xl sm:text-4xl font-heading font-bold text-white max-w-2xl mx-auto leading-tight">
-            Interested in adding a rigorous, evidence-driven Machine Learning Engineer to your team?
-          </h2>
-
-          <p className="text-white/80 font-sans text-sm sm:text-base max-w-xl mx-auto">
-            {portfolioData.personal.cta}
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <a
-              href={`mailto:${portfolioData.personal.email}`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-accent text-white font-sans font-semibold text-sm hover:bg-accent-hover transition-colors shadow-sm"
-            >
-              <Mail className="w-4 h-4" />
-              <span>Send Interview Invitation</span>
-            </a>
-            <a
-              href={portfolioData.personal.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-white/10 text-white border border-white/20 font-mono text-xs font-semibold hover:bg-white/20 transition-colors"
-            >
-              <FileText className="w-4 h-4 text-accent" />
-              <span>View Resume PDF</span>
-            </a>
-          </div>
         </div>
       </section>
 

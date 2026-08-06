@@ -7,29 +7,37 @@ export default {
   theme: {
     extend: {
       colors: {
+        cyber: {
+          void: "#070A12",
+          card: "#0B0F19",
+          border: "#1E293B",
+          cyan: "#00F2FE",
+          purple: "#7F00FF",
+          emerald: "#10B981",
+        },
         primary: {
-          DEFAULT: "#1F3A5F",
-          hover: "#162C49",
-          light: "#EAEFF5",
+          DEFAULT: "#00F2FE",
+          hover: "#4FACFE",
+          light: "rgba(0, 242, 254, 0.1)",
         },
         dark: {
-          DEFAULT: "#16181D",
-          muted: "#4B5262",
-          subtle: "#71798B",
+          DEFAULT: "#F8FAFC",
+          muted: "#94A3B8",
+          subtle: "#64748B",
         },
         bg: {
-          DEFAULT: "#FAFAF9",
-          card: "#FFFFFF",
-          subtle: "#F4F4F2",
+          DEFAULT: "#070A12",
+          card: "rgba(15, 23, 42, 0.85)",
+          subtle: "rgba(30, 41, 59, 0.6)",
         },
         accent: {
-          DEFAULT: "#2E9E8F",
-          hover: "#247E72",
-          light: "#EBF6F5",
+          DEFAULT: "#00F2FE",
+          hover: "#4FACFE",
+          light: "rgba(0, 242, 254, 0.15)",
         },
         border: {
-          DEFAULT: "#E5E5E0",
-          strong: "#D1D1C9",
+          DEFAULT: "rgba(51, 65, 85, 0.6)",
+          strong: "rgba(0, 242, 254, 0.4)",
         }
       },
       fontFamily: {
@@ -37,6 +45,10 @@ export default {
         sans: ["'Inter'", "sans-serif"],
         mono: ["'IBM Plex Mono'", "monospace"],
       },
+      boxShadow: {
+        'neon-cyan': '0 0 20px rgba(0, 242, 254, 0.35)',
+        'neon-purple': '0 0 20px rgba(127, 0, 255, 0.35)',
+      }
     },
   },
   plugins: [],
