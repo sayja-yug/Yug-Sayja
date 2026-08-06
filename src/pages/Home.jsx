@@ -223,7 +223,7 @@ export const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {certificates.map((cert) => (
+          {certificates.filter((c) => c.featured).map((cert) => (
             <Card3D key={cert.id} maxTilt={5} className="p-6 space-y-4 flex flex-col justify-between h-full">
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-2">
