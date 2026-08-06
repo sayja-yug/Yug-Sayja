@@ -1,92 +1,43 @@
 import React, { useState } from 'react';
-import { Search, Terminal, Cpu, Layers, CheckCircle2, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-const SKILL_ITEMS = [
-  {
-    category: 'Deep Learning & Neural Architectures',
-    name: 'Object Detection & Segmentation',
-    tools: 'YOLOv8, Lightweight CNNs, Region Detection',
-    projects: ['smart-shiksha'],
-    level: 'Advanced',
-  },
-  {
-    category: 'Deep Learning & Neural Architectures',
-    name: 'Classification & Feature Extractors',
-    tools: 'ResNet, MobileNetV3, DistilBERT, Transformers',
-    projects: ['swasthya-care'],
-    level: 'Expert',
-  },
-  {
-    category: 'Deep Learning & Neural Architectures',
-    name: 'Explainable AI (XAI)',
-    tools: 'Grad-CAM, Layer-CAM, Feature Mapping',
-    projects: ['swasthya-care'],
-    level: 'Advanced',
-  },
-  {
-    category: 'ML Frameworks & Optimization',
-    name: 'Core Neural Frameworks',
-    tools: 'PyTorch 2.x, torchvision, Scikit-Learn',
-    projects: ['swasthya-care', 'smart-shiksha'],
-    level: 'Expert',
-  },
-  {
-    category: 'ML Frameworks & Optimization',
-    name: 'Quantization & Acceleration',
-    tools: 'ONNX Runtime, PyTorch PTQ/QAT, TensorRT',
-    projects: ['swasthya-care', 'smart-shiksha'],
-    level: 'Advanced',
-  },
-  {
-    category: 'ML Frameworks & Optimization',
-    name: 'Multimodal NLP Fusion',
-    tools: 'DistilBERT, HuggingFace Transformers, PyTorch Fusion',
-    projects: ['swasthya-care'],
-    level: 'Intermediate',
-  },
-  {
-    category: 'MLOps & Systems',
-    name: 'Containerization & REST APIs',
-    tools: 'Docker, FastAPI, Git, GitHub Actions',
-    projects: ['swasthya-care'],
-    level: 'Advanced',
-  },
-  {
-    category: 'MLOps & Systems',
-    name: 'Web & Client Integration',
-    tools: 'WebAssembly, ONNX Web, React, Vite',
-    projects: ['smart-shiksha'],
-    level: 'Advanced',
-  },
-];
+import { Search, Terminal, Code2, Database, Cpu, Sparkles, Wrench } from 'lucide-react';
+import { portfolioData } from '../../data/portfolioData';
 
 export const SkillsExplorer = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = ['All', 'Deep Learning & Neural Architectures', 'ML Frameworks & Optimization', 'MLOps & Systems'];
+  const { skills } = portfolioData;
 
-  const filteredSkills = SKILL_ITEMS.filter((skill) => {
-    const matchesCategory = selectedCategory === 'All' || skill.category === selectedCategory;
-    const matchesSearch =
-      skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      skill.tools.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const categories = ['All', ...skills.categories.map((c) => c.name)];
+
+  const filteredCategories = skills.categories
+    .map((cat) => {
+      const filteredSkillsList = cat.skills.filter((skill) =>
+        skill.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      return {
+        ...cat,
+        skills: filteredSkillsList,
+      };
+    })
+    .filter((cat) => {
+      const matchesCategory = selectedCategory === 'All' || cat.name === selectedCategory;
+      const hasSkills = cat.skills.length > 0;
+      return matchesCategory && hasSkills;
+    });
 
   return (
-    <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-6 sm:p-8 space-y-6 shadow-sm font-sans text-white">
+    <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl font-sans text-white relative z-10">
       
       {/* Header & Controls */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 font-mono text-xs font-semibold mb-1">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 font-mono text-xs font-bold mb-1">
             <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Filterable Machine Learning Engineering Skill Matrix</span>
+            <span>Technical Skills & Core Stack</span>
           </div>
-          <h3 className="text-xl font-heading font-bold text-white">
-            Technical Stack & Verified Capabilities
+          <h3 className="text-xl font-heading font-extrabold text-white">
+            Yug Sayja's Verified Technical Skill Matrix
           </h3>
         </div>
 
@@ -95,10 +46,10 @@ export const SkillsExplorer = () => {
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
           <input
             type="text"
-            placeholder="Search PyTorch, ONNX, Transformers..."
+            placeholder="Search Python, PyTorch, Django..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 rounded bg-slate-950 border border-slate-800 text-xs font-mono text-white focus:outline-none focus:border-cyan-400"
+            className="w-full pl-9 pr-3 py-2 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono text-white focus:outline-none focus:border-cyan-400"
           />
         </div>
       </div>
@@ -109,10 +60,10 @@ export const SkillsExplorer = () => {
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-3 py-1.5 rounded font-semibold transition-colors ${
+            className={`px-3.5 py-1.5 rounded-lg font-bold transition-all ${
               selectedCategory === cat
-                ? 'bg-cyan-500 text-slate-950 font-bold shadow-md'
-                : 'bg-slate-950 border border-slate-800 text-slate-300 hover:text-white'
+                ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20'
+                : 'bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700'
             }`}
           >
             {cat}
@@ -120,34 +71,25 @@ export const SkillsExplorer = () => {
         ))}
       </div>
 
-      {/* Skills Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {filteredSkills.map((skill, idx) => (
+      {/* Skills Grid by Category */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredCategories.map((cat, idx) => (
           <div
             key={idx}
-            className="p-4 rounded-lg bg-slate-950/80 border border-slate-800 space-y-3 flex flex-col justify-between hover:border-cyan-500/40 transition-all"
+            className="p-5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-3 flex flex-col justify-between hover:border-cyan-500/40 transition-all"
           >
-            <div className="space-y-1">
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-heading font-bold text-sm text-white">{skill.name}</span>
-                <span className="px-2 py-0.5 rounded bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 font-mono text-[10px] font-bold">
-                  {skill.level}
-                </span>
-              </div>
-              <p className="font-mono text-xs text-slate-400">{skill.tools}</p>
-            </div>
-
-            <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono">
-              <span className="text-slate-400">Applied In:</span>
-              <div className="flex items-center gap-1.5">
-                {skill.projects.map((pId) => (
-                  <Link
-                    key={pId}
-                    to={`/projects/${pId}`}
-                    className="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-cyan-400 hover:text-cyan-300 font-bold transition-colors"
+            <div className="space-y-3">
+              <span className="font-heading font-bold text-sm text-cyan-400 uppercase tracking-wider block border-b border-slate-800 pb-2">
+                {cat.name}
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skillItem, sIdx) => (
+                  <span
+                    key={sIdx}
+                    className="px-3 py-1 rounded-md bg-slate-900 border border-slate-800 font-mono text-xs text-slate-200 font-semibold hover:border-cyan-400/50 hover:text-cyan-300 transition-colors"
                   >
-                    {pId === 'swasthya-care' ? 'Swasthya' : 'Shiksha'}
-                  </Link>
+                    {skillItem}
+                  </span>
                 ))}
               </div>
             </div>

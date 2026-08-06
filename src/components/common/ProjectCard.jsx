@@ -1,72 +1,87 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Github, ExternalLink, Activity } from 'lucide-react';
-import MetricBadge from './MetricBadge';
+import { ArrowUpRight, Github, ExternalLink, Activity, Sparkles, CheckCircle2 } from 'lucide-react';
 import Card3D from '../3d/Card3D';
 
 export const ProjectCard = ({ project }) => {
-  const { id, isLead, title, subtitle, shortDescription, model, results, githubUrl, demoUrl } = project;
+  const { id, isLead, title, subtitle, shortDescription, techStack, results, githubUrl, demoUrl, highlights } = project;
 
   return (
-    <Card3D maxTilt={10} className="h-full">
+    <Card3D maxTilt={6} className="h-full">
       <div 
-        className={`group relative rounded-xl p-6 sm:p-8 flex flex-col justify-between h-full border border-cyan-500/20 bg-slate-900/80 backdrop-blur-md ${
-          isLead ? 'ring-1 ring-cyan-400/30' : ''
+        className={`group relative rounded-2xl p-6 sm:p-8 flex flex-col justify-between h-full border border-cyan-500/20 bg-slate-900/90 backdrop-blur-xl shadow-xl transition-all duration-300 ${
+          isLead ? 'ring-1 ring-cyan-400/40 shadow-cyan-950/40' : ''
         }`}
       >
         <div>
-          {/* Header Badges */}
-          <div className="flex items-center justify-between gap-2 mb-3">
-            <div className="flex items-center gap-2">
-              {isLead && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-cyan-500/20 border border-cyan-400/40 text-cyan-300">
-                  <Activity className="w-3 h-3 text-cyan-400" />
-                  Lead ML Case Study
-                </span>
-              )}
-              <span className="text-xs font-mono text-purple-300 bg-purple-950/60 px-2 py-0.5 rounded border border-purple-500/30">
-                {model.architecture.split(' ')[0]}
+          {/* Header Badge */}
+          <div className="flex items-center justify-between gap-2 mb-4">
+            {isLead ? (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/20 border border-cyan-400/40 text-cyan-300">
+                <Activity className="w-3.5 h-3.5 text-cyan-400" />
+                Lead Showcase Project
               </span>
-            </div>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-purple-500/20 border border-purple-400/40 text-purple-300">
+                <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+                Featured AI Solution
+              </span>
+            )}
 
-            <span className="text-xs font-mono text-cyan-400/80 hidden sm:inline-block">
-              {model.framework.split(',')[0]}
+            <span className="text-xs font-mono text-slate-400">
+              {techStack && techStack[0]}
             </span>
           </div>
 
           {/* Title & Subtitle */}
-          <h3 className="text-xl sm:text-2xl font-heading font-bold text-white group-hover:text-cyan-300 transition-colors">
+          <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-white group-hover:text-cyan-300 transition-colors">
             <Link to={`/projects/${id}`} className="hover:underline">
               {title}
             </Link>
           </h3>
-          <p className="text-xs font-mono text-cyan-400 font-medium mt-1 mb-3">
+          <p className="text-xs font-mono text-cyan-400 font-semibold mt-1 mb-3">
             {subtitle}
           </p>
 
           {/* Description */}
-          <p className="text-slate-300 text-sm font-sans leading-relaxed mb-6">
+          <p className="text-slate-300 text-sm font-sans leading-relaxed mb-5">
             {shortDescription}
           </p>
 
-          {/* Metrics Grid */}
-          <div className="grid grid-cols-2 gap-2 mb-6">
-            {results.slice(0, 4).map((res, idx) => (
-              <div key={idx} className="p-2.5 rounded bg-slate-950/70 border border-slate-800 text-xs font-mono">
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">{res.label}</span>
-                <span className="text-base font-bold text-cyan-400 mt-0.5 block">{res.value}</span>
-              </div>
-            ))}
-          </div>
+          {/* Tech Stack Pills */}
+          {techStack && (
+            <div className="flex flex-wrap gap-1.5 mb-5">
+              {techStack.map((tech, idx) => (
+                <span
+                  key={idx}
+                  className="px-2.5 py-0.5 rounded bg-slate-950 border border-slate-800 text-[11px] font-mono text-cyan-300 font-semibold"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Key Metrics / Features Grid */}
+          {results && (
+            <div className="grid grid-cols-2 gap-2 mb-6">
+              {results.slice(0, 4).map((res, idx) => (
+                <div key={idx} className="p-3 rounded-lg bg-slate-950/80 border border-slate-800 text-xs font-mono">
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">{res.label}</span>
+                  <span className="text-sm font-bold text-cyan-300 mt-0.5 block truncate">{res.value}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Action Footer */}
-        <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-sm">
+        <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-sm font-mono">
           <Link
             to={`/projects/${id}`}
-            className="inline-flex items-center gap-1.5 font-semibold text-cyan-400 hover:text-cyan-300 font-sans transition-colors"
+            className="inline-flex items-center gap-1.5 font-bold text-cyan-400 hover:text-cyan-300 transition-colors text-xs"
           >
-            View Case Study & 3D Telemetry
+            <span>View Full Details</span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
 
@@ -76,7 +91,7 @@ export const ProjectCard = ({ project }) => {
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-1 text-xs font-mono"
+                className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-1 text-xs font-bold"
                 aria-label={`GitHub Repository for ${title}`}
               >
                 <Github className="w-4 h-4" />
@@ -88,11 +103,11 @@ export const ProjectCard = ({ project }) => {
                 href={demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-1 text-xs font-mono"
+                className="text-slate-950 font-bold bg-cyan-400 hover:bg-cyan-300 px-3 py-1 rounded transition-colors inline-flex items-center gap-1 text-xs shadow-md shadow-cyan-400/20"
                 aria-label={`Live Demo for ${title}`}
               >
-                <ExternalLink className="w-4 h-4" />
-                <span>Demo</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span>Live Demo</span>
               </a>
             )}
           </div>

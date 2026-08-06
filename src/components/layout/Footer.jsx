@@ -21,7 +21,7 @@ export const Footer = () => {
               "{portfolioData.personal.claim}"
             </p>
             <p className="text-slate-400 text-xs font-mono">
-              Machine Learning • Deep Learning • PyTorch • Latency Optimization • ONNX
+              Python • PyTorch • Django • Scikit-learn • React.js • n8n
             </p>
           </div>
 
