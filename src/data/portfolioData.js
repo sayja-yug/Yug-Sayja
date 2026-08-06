@@ -55,10 +55,11 @@ export const portfolioData = {
         "Built an AI-powered personalized learning platform using Python and Machine Learning concepts to generate adaptive learning recommendations.",
         "Designed knowledge-gap detection, explainable recommendations, and personalized learning paths based on student performance.",
         "Developed dashboards for students, teachers, and parents to visualize learning progress and academic insights.",
-        "Secured 1st Runner-Up at Hack Genesis Hackathon, IITRAM (2026).",
+        "Secured 1st Runner-Up (2nd Position) at Hack Genesis Hackathon, IITRAM (Jan 23-24, 2026) with Team Byte Forge.",
       ],
-      githubUrl: "https://github.com/sayja-yug",
+      githubUrl: "https://github.com/sayja-yug/ByteForge",
       demoUrl: "https://byteforge-9k5k.onrender.com/",
+      certImageUrl: "/certificates/hackgenesis_cert.png",
     },
     {
       id: "whatsapp-ai-agent",
@@ -117,8 +118,8 @@ export const portfolioData = {
 
   achievements: [
     {
-      title: "1st Runner-Up — Hack Genesis Hackathon, IITRAM (2026)",
-      description: "Secured 1st Runner-Up for developing Smart Shiksha, an AI-Powered Personalized Learning Recommendation System.",
+      title: "1st Runner-Up (2nd Position) — HackGenesis'26 Hackathon, IITRAM",
+      description: "Secured 2nd Position with Team Byte Forge at HackGenesis'26 (Jan 23-24, 2026) for developing Smart Shiksha, an AI-Powered Personalized Learning Recommendation System.",
     },
   ],
 
@@ -157,6 +158,17 @@ export const portfolioData = {
 
   certificates: [
     {
+      id: "hackgenesis-2026",
+      title: "HackGenesis'26 — 2nd Position Certificate",
+      issuer: "IITRAM (Institute of Infrastructure Research and Management)",
+      date: "Jan 23-24, 2026",
+      skills: ["AI Personalization", "Smart Shiksha", "Hackathon Winner", "Team Byte Forge"],
+      credentialUrl: "https://github.com/sayja-yug/ByteForge",
+      imageUrl: "/certificates/hackgenesis_cert.png",
+      badgeText: "1st Runner-Up (2nd Place)",
+      featured: true,
+    },
+    {
       id: "ibm-dl-prof",
       title: "IBM Deep Learning with PyTorch, Keras and TensorFlow",
       issuer: "IBM / Coursera",
@@ -187,7 +199,7 @@ export const portfolioData = {
       credentialUrl: "https://coursera.org/verify/9LREPAW91YWR",
       imageUrl: "/certificates/cert_ibm_rag_agents.png",
       badgeText: "IBM Certified",
-      featured: true,
+      featured: false,
     },
     {
       id: "ibm-dl-pytorch",
