@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Briefcase, GraduationCap, Award, Trophy, Github, Linkedin, CheckCircle2, ShieldCheck, ExternalLink, Code2, Bot, HeartPulse } from 'lucide-react';
+import { ArrowRight, Briefcase, GraduationCap, Award, Trophy, Github, Linkedin, CheckCircle2, ShieldCheck, ExternalLink, Code2, Bot, HeartPulse, FileText, Eye } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import SectionHeading from '../components/common/SectionHeading';
 import SkillsExplorer from '../components/interactive/SkillsExplorer';
+import ResumeModal from '../components/interactive/ResumeModal';
 import Card3D from '../components/3d/Card3D';
 import YugDoodleViewer from '../components/3d/YugDoodleViewer';
 
 export const Home = () => {
   const { personal, experience, education, achievements, certificates, projects } = portfolioData;
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
     <div className="space-y-24 py-8 sm:py-12 relative z-10 text-white font-sans">
       
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+
       {/* HERO SECTION */}
       <section className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -67,6 +71,14 @@ export const Home = () => {
                 <span>View All Projects</span>
                 <ArrowRight className="w-4 h-4 text-slate-950" />
               </Link>
+
+              <button
+                onClick={() => setIsResumeOpen(true)}
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-cyan-400 text-slate-950 font-mono font-bold text-xs hover:bg-cyan-300 shadow-lg shadow-cyan-400/20 transition-all transform hover:-translate-y-0.5"
+              >
+                <Eye className="w-4 h-4 text-slate-950" />
+                <span>Preview Resume</span>
+              </button>
 
               <a
                 href={personal.github}
