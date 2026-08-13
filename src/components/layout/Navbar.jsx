@@ -10,10 +10,10 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'About & Experience', path: '/about' },
-    { name: 'Certificates', path: '/certificates' },
+    { name: 'ML Projects', path: '/projects' },
+    { name: 'Experience', path: '/about' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Certificates', path: '/certificates' },
   ];
 
   return (

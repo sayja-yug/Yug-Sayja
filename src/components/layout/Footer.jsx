@@ -38,22 +38,22 @@ export const Footer = () => {
               </li>
               <li>
                 <Link to="/projects" className="text-slate-400 hover:text-cyan-300 transition-colors">
-                  Projects & Case Studies
+                  ML Projects & Case Studies
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="text-slate-400 hover:text-cyan-300 transition-colors">
-                  About & Experience
-                </Link>
-              </li>
-              <li>
-                <Link to="/certificates" className="text-slate-400 hover:text-cyan-300 transition-colors">
-                  Certificates
+                  Experience & About
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-slate-400 hover:text-cyan-300 transition-colors">
                   Contact & Hiring Portal
+                </Link>
+              </li>
+              <li>
+                <Link to="/certificates" className="text-slate-400 hover:text-cyan-300 transition-colors">
+                  Certificates
                 </Link>
               </li>
             </ul>
