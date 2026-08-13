@@ -21,7 +21,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn font-sans print:p-0 print:bg-white print:static print:inset-auto">
+    <div className="fixed inset-0 z-[999] flex items-center justify-center p-2 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn font-sans print:p-0 print:bg-white print:static print:inset-auto">
       
       {/* Print Specific CSS to ensure ONLY the resume document prints cleanly */}
       <style>{`
