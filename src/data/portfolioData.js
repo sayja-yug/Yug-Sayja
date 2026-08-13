@@ -9,7 +9,7 @@ export const portfolioData = {
     location: "Ahmedabad, Gujarat, India",
     resumeUrl: "/resume.pdf",
     claim: "Building real-world AI, Machine Learning, and Intelligent Agent solutions using Python, PyTorch, Django, and Scikit-learn.",
-    cta: "Invite Yug Sayja for a Machine Learning Engineer internship or full-time role.",
+    cta: "I am actively seeking a Machine Learning Engineer internship. Let's discuss how I can contribute to your AI team.",
     summary: "Aspiring AI Engineer and Computer Science student at IITRAM with a passion for Machine Learning, Deep Learning, Agentic AI, and Software Development. Experienced in building real-world projects using Python, Django, React, PyTorch, and Scikit-learn. Eager to leverage analytical thinking, problem-solving abilities, and technical skills to contribute to innovative technology-driven organizations while continuously learning and developing impactful AI solutions.",
     careerGoals: "Eager to join an innovative technology-driven organization as a Machine Learning Engineer Intern or AI Engineer, applying data modeling, supervised learning, and AI agent workflows to build impactful products.",
   },

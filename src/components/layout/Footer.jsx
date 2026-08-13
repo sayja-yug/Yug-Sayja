@@ -96,7 +96,7 @@ export const Footer = () => {
               href={`mailto:${portfolioData.personal.email}`}
               className="inline-flex items-center gap-1 text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
             >
-              <span>Invite Yug Sayja for MLE Role</span>
+              <span>Discuss ML Internship</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>

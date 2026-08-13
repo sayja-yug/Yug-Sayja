@@ -28,48 +28,37 @@ export const Home = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-7 space-y-6"
           >
-            {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-semibold shadow-lg shadow-cyan-500/10">
-              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
-              <span>Available for Machine Learning & AI Engineering Roles</span>
-            </div>
-
             {/* Name & Title */}
-            <div className="space-y-2">
-              <span className="font-mono text-sm text-cyan-400 font-bold tracking-widest uppercase block">
-                Machine Learning & AI Engineering Portfolio
-              </span>
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/40 text-cyan-300 font-mono text-xs font-semibold shadow-lg shadow-cyan-500/10">
+                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+                <span>Seeking ML Engineering Internships</span>
+              </div>
+              
               <h1 className="text-4xl sm:text-6xl font-heading font-extrabold text-white tracking-tight leading-[1.1]">
-                <span className="text-gradient-cyan">{personal.name}</span>
+                I build practical <span className="text-gradient-cyan">machine learning</span> solutions.
               </h1>
-              <p className="text-xl sm:text-2xl font-heading font-semibold text-purple-300">
-                {personal.title} • Computer Science Student at IITRAM
+              
+              <p className="text-xl sm:text-2xl font-heading font-semibold text-slate-300 max-w-2xl leading-relaxed">
+                Computer Science student at IITRAM focusing on computer vision and applied AI. I turn models into real-world applications using Python, PyTorch, and Scikit-learn.
               </p>
             </div>
-
-            {/* Core Mission Glass Card */}
-            <Card3D maxTilt={4} className="p-6">
-              <span className="font-mono text-xs text-cyan-400 font-bold uppercase tracking-wider block mb-2">
-                Core Engineering Mission
-              </span>
-              <p className="text-lg font-heading font-semibold text-slate-100 leading-relaxed">
-                "{personal.claim}"
-              </p>
-            </Card3D>
-
-            {/* Subtext Summary */}
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-sans">
-              Building end-to-end Machine Learning models, Django full-stack platforms, and AI Agent workflows using Python, PyTorch, Scikit-learn, React, and n8n.
-            </p>
 
             {/* Social & CTA Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-4 pt-4">
               <Link
-                to="/projects"
+                to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-mono font-bold text-sm hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5"
               >
-                <span>View All Projects</span>
+                <span>Discuss ML Internship</span>
                 <ArrowRight className="w-4 h-4 text-slate-950" />
+              </Link>
+
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-800 text-slate-300 font-mono font-bold text-xs hover:bg-slate-700 hover:text-white shadow-lg transition-all transform hover:-translate-y-0.5 border border-slate-700"
+              >
+                <span>View All Projects</span>
               </Link>
 
               <button
