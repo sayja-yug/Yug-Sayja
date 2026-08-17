@@ -26,7 +26,7 @@ export const Contact = () => {
     try {
       await emailjs.send(
         'service_rdtcvo1',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        'template_2b58na7',
         {
           from_name: formData.name,
           reply_to: formData.email,
