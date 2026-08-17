@@ -28,12 +28,11 @@ export const Contact = () => {
         'service_rdtcvo1',
         'template_2b58na7',
         {
-          from_name: formData.name,
-          reply_to: formData.email,
-          organization: formData.organization,
-          role_type: formData.roleType,
+          name: formData.name,
+          email: formData.email,
+          title: formData.organization ? `${formData.roleType} - ${formData.organization}` : formData.roleType,
           message: formData.message,
-          to_name: personal.name,
+          time: new Date().toLocaleString(),
         },
         '7pF7VGslKCXyt8eVJ'
       );
