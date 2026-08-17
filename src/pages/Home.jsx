@@ -40,7 +40,7 @@ export const Home = () => {
               </h1>
               
               <p className="text-xl sm:text-2xl font-heading font-semibold text-slate-300 max-w-2xl leading-relaxed">
-                Computer Science student at IITRAM focusing on data-driven systems and applied AI. I turn models into real-world applications using Python, PyTorch, and Scikit-learn.
+                Computer Science student at IITRAM focusing on machine learning and applied AI. I turn models into real-world applications using Python, PyTorch, and Scikit-learn.
               </p>
             </div>
 

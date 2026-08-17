@@ -3,10 +3,13 @@ import { portfolioData } from '../data/portfolioData';
 import SectionHeading from '../components/common/SectionHeading';
 import { Mail, Github, Linkedin, FileText, Send, CheckCircle2, ArrowUpRight, Phone, MapPin } from 'lucide-react';
 import Card3D from '../components/3d/Card3D';
+import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
   const { personal } = portfolioData;
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,9 +18,32 @@ export const Contact = () => {
     message: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      await emailjs.send(
+        'service_rdtcvo1',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          organization: formData.organization,
+          role_type: formData.roleType,
+          message: formData.message,
+          to_name: personal.name,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+      );
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Failed to send email:', err);
+      setError('Failed to send message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -213,11 +239,15 @@ export const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-mono text-xs font-bold hover:from-cyan-400 hover:to-blue-500 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+                  disabled={isSubmitting}
+                  className="w-full py-3 rounded bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-mono text-xs font-bold hover:from-cyan-400 hover:to-blue-500 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-4 h-4 text-slate-950" />
-                  <span>Submit Inquiry to Yug Sayja</span>
+                  <span>{isSubmitting ? 'Sending...' : 'Submit Inquiry to Yug Sayja'}</span>
                 </button>
+                {error && (
+                  <p className="text-red-400 text-xs font-mono text-center mt-2">{error}</p>
+                )}
               </form>
             )}
           </Card3D>
