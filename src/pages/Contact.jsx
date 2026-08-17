@@ -35,7 +35,7 @@ export const Contact = () => {
           message: formData.message,
           to_name: personal.name,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+        '7pF7VGslKCXyt8eVJ'
       );
       setSubmitted(true);
     } catch (err) {
