@@ -21,7 +21,12 @@ export const ResumeModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[999] flex items-center justify-center p-2 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn font-sans print:p-0 print:bg-white print:static print:inset-auto">
+    <div 
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-[999] flex items-center justify-center p-2 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn font-sans print:p-0 print:bg-white print:static print:inset-auto"
+    >
       
       {/* Print Specific CSS to ensure ONLY the resume document prints cleanly */}
       <style>{`
@@ -101,13 +106,13 @@ export const ResumeModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Scrollable Document Container */}
-        <div className="flex-1 overflow-y-auto bg-slate-950/80 p-4 sm:p-8 flex justify-center">
+        <div className="flex-1 overflow-y-auto bg-slate-950/80 p-3 sm:p-8">
           
           {/* Executive Printable A4 Resume Sheet */}
           <div
             id="printable-resume"
             ref={resumeRef}
-            className="w-full max-w-[800px] bg-white text-slate-900 shadow-2xl rounded-sm p-6 sm:p-10 font-sans leading-relaxed text-xs sm:text-sm space-y-5 select-text border border-slate-200"
+            className="w-full max-w-[800px] mx-auto bg-white text-slate-900 shadow-2xl rounded-sm p-6 sm:p-10 font-sans leading-relaxed text-xs sm:text-sm space-y-5 select-text border border-slate-200 h-auto my-0 sm:my-2"
           >
             {/* Resume Header */}
             <div className="border-b-2 border-slate-900 pb-4 text-center sm:text-left space-y-2">
