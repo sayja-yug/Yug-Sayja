@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -36,6 +37,7 @@ export function App() {
         {/* Persistent Footer */}
         <Footer />
       </div>
+      <Analytics />
     </Router>
   );
 }
